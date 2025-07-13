@@ -39,20 +39,29 @@
 │   │   ├── utils/          # Utility functions and API calls
 │   │   └── index.css       # Global styles
 │   ├── package.json
-│   └── vite.config.js
+│   ├── vite.config.js
+│   ├── tailwind.config.js
+│   ├── postcss.config.cjs
+│   ├── .eslintrc.cjs
+│   └── index.html
 ├── server/                 # Node.js backend API
+│   ├── models/             # MongoDB data models
+│   │   ├── Coastline.js    # Coastline data schema
+│   │   └── Analysis.js     # Analysis results schema
 │   ├── routes/             # API route handlers
 │   │   ├── coastlines.js   # Coastline CRUD operations
 │   │   ├── analysis.js     # Geospatial analysis endpoints
 │   │   └── upload.js       # File upload handling
+│   ├── scripts/            # Utility scripts
+│   │   └── seedDatabase.js # Database seeding script
 │   ├── server.js           # Main server file
-│   └── package.json
-├── models/                 # MongoDB data models
-│   ├── Coastline.js        # Coastline data schema
-│   └── Analysis.js         # Analysis results schema
-├── data/geo/               # Sample GeoJSON files
-├── scripts/                # Utility scripts
-│   └── seedDatabase.js     # Database seeding script
+│   ├── package.json
+│   └── .env                # Environment variables
+├── data/
+│   └── geo/                # Sample GeoJSON files
+├── .git/                   # Git repository
+├── .vscode/                # VS Code settings
+├── package-lock.json       # Root package lock file
 └── README.md
 ```
 
@@ -80,19 +89,23 @@
 
 3. **Install frontend dependencies**
    ```bash
-   cd ../client
+   cd client
    npm install
    ```
 
 4. **Set up environment variables**
    ```bash
-   cd ../server
-   cp .env.example .env
-   # Edit .env with your MongoDB connection string
+   cd server
+   # Create .env file with your MongoDB connection string
+   # Example:
+   # MONGODB_URI=mongodb://localhost:27017/coastline_analyzer
+   # NODE_ENV=development
+   # PORT=5000
    ```
 
 5. **Seed the database (optional)**
    ```bash
+   cd server
    npm run seed
    ```
 
@@ -111,7 +124,7 @@
    ```
 
 7. **Open your browser**
-   - Frontend: http://localhost:3000
+   - Frontend: http://localhost:5173 (Vite default port)
    - Backend API: http://localhost:5000
 
 ## 📡 Free Data Sources
@@ -152,7 +165,7 @@
 
 1. **Backend**: Add routes in `/server/routes/`
 2. **Frontend**: Add components in `/client/src/components/`
-3. **Database**: Update models in `/models/`
+3. **Database**: Update models in `/server/models/`
 4. **API**: Update API calls in `/client/src/utils/api.js`
 
 ## 🗺️ Usage Examples
